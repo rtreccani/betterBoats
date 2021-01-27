@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "timecop.better.boats.betterboats"
+    ],
+    "client":[
+        "timecop.better.boats.betterboatsClient"
     ]
   },
   "mixins": [
