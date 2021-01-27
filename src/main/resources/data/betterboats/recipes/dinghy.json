@@ -1,0 +1,22 @@
+{
+    "type":"minecraft.crafting_shaped",
+    "pattern":[
+        "SW ",
+        "SWW",
+        "BBB"
+    ],
+    "key":{
+        "S":{
+            "tag":"minecraft:stick"
+        },
+        "W":{
+            "tag":"minecraft:white_wool"
+        },
+        "B":{
+            "tag":"minecraft:oak_boat"
+        }
+    },
+    "result":{
+        "item": "betterboats:dinghy"
+    }
+}
