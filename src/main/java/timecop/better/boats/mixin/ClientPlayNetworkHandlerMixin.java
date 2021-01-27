@@ -29,7 +29,7 @@ public abstract class ClientPlayNetworkHandlerMixin {
 	) // thank you parzivail
 	private void onEntitySpawn(EntitySpawnS2CPacket packet, CallbackInfo ci, double x, double y, double z, EntityType<?> type) {
 		Entity entity = null;
-        if (type == EntityType.BOAT) {
+        if (type == dinghyEntity.getType() {
 			entity = new dinghyEntity(world, x, y, z);
 		} // we can replicate this one here for all our other entities
 		// entity would be null here when the type was not one for us

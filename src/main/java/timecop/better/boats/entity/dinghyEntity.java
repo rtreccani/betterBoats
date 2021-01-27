@@ -29,6 +29,10 @@ public class dinghyEntity extends BoatEntity{
         System.out.println("making a dinghyentity using 2nd constructor");
      }
 
+    public final EntityType<?> getType(){
+        return(type);
+    }
+
    @Override
    public Item asItem(){
        return(DINGHY_ITEM);
