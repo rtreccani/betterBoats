@@ -1,4 +1,4 @@
-package timecop.better.boats;
+package timecop.Better.Boats;
 
 import net.fabricmc.api.ModInitializer;
 
@@ -9,19 +9,19 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.EntityType.EntityFactory;
 import net.minecraft.util.registry.Registry;
-import timecop.better.boats.entity.dinghyEntity;
 import net.minecraft.util.Identifier;
+import timecop.Better.Boats.entity.DinghyEntity;
 
 
-public class betterboats implements ModInitializer {
+public class BetterBoats implements ModInitializer {
 
     //public static final Item DINGHY_ITEM = new Item(new Item.Settings().group(ItemGroup.TRANSPORTATION));
     //public static final 
 
-    public static final EntityType<dinghyEntity> DINGHY = Registry.register(
+    public static final EntityType<DinghyEntity> DINGHY = Registry.register(
         Registry.ENTITY_TYPE,
         new Identifier("betterboats","dinghy_entity"),
-        FabricEntityTypeBuilder.create(SpawnGroup.MISC, dinghyEntityFactory()).dimensions(EntityDimensions.fixed(10.0f, 10.0f)).build()
+        FabricEntityTypeBuilder.create(SpawnGroup.MISC, dinghyEntityFactory()).dimensions(EntityDimensions.fixed(3.0f, 3.0f)).build()
     );
 
 	@Override
@@ -30,12 +30,12 @@ public class betterboats implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
         // Proceed with mild caution.
         
-        Registry.register(Registry.ITEM, new Identifier("betterboats", "dinghy_item"), dinghyEntity.DINGHY_ITEM);
+        Registry.register(Registry.ITEM, new Identifier("betterboats", "dinghy_item"), DinghyEntity.DINGHY_ITEM);
 		System.out.println("Hello Fabric world!");
 	}
 
-	private static EntityFactory<dinghyEntity> dinghyEntityFactory() {
-		return dinghyEntity::new;
+	private static EntityFactory<DinghyEntity> dinghyEntityFactory() {
+		return DinghyEntity::new;
 	}
 }
 

@@ -1,4 +1,4 @@
-package timecop.better.boats.mixin;
+package timecop.Better.Boats.mixin;
 
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.world.ClientWorld;
@@ -6,8 +6,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.util.math.Vec3d;
-import timecop.better.boats.betterboats;
-import timecop.better.boats.entity.dinghyEntity;
+import timecop.Better.Boats.BetterBoats;
+import timecop.Better.Boats.entity.DinghyEntity;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -31,9 +31,9 @@ public abstract class ClientPlayNetworkHandlerMixin {
 	private void onEntitySpawn(EntitySpawnS2CPacket packet, CallbackInfo ci, double x, double y, double z, EntityType<?> type) {
         System.out.println("reet an entity has been summoned");
 		Entity entity = null;
-        if (type == betterboats.DINGHY) {
+        if (type == BetterBoats.DINGHY) {
             System.out.println("that entity was of type betterboats.DINGHY");
-			entity = new dinghyEntity(world, x, y, z);
+			entity = new DinghyEntity(world, x, y, z);
 		} // we can replicate this one here for all our other entities
 		// entity would be null here when the type was not one for us
 		if (entity != null) {

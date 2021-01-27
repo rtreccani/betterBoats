@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "timecop.better.boats.mixin",
+  "package": "timecop.Better.Boats.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
   ],

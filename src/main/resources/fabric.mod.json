@@ -19,14 +19,14 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "timecop.better.boats.betterboats"
+      "timecop.Better.Boats.BetterBoats"
     ],
     "client":[
-        "timecop.better.boats.betterboatsClient"
+        "timecop.Better.Boats.BetterBoatsClient"
     ]
   },
   "mixins": [
-    "betterboats.mixins.json"
+    "BetterBoats.mixins.json"
   ],
 
   "depends": {
