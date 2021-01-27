@@ -5,6 +5,7 @@ import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.World;
 
@@ -17,6 +18,16 @@ public class dinghyEntity extends BoatEntity{
         super(entityType, world);
         System.out.println("you summoned a dinghy");
     }
+
+    public dinghyEntity(World world, double x, double y, double z) {
+        this(EntityType.BOAT, world);
+        this.updatePosition(x, y, z);
+        this.setVelocity(Vec3d.ZERO);
+        this.prevX = x;
+        this.prevY = y;
+        this.prevZ = z;
+        System.out.println("making a dinghyentity using 2nd constructor");
+     }
 
    @Override
    public Item asItem(){
