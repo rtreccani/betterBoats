@@ -1,3 +1,4 @@
+
 package timecop.better.boats.entity;
 
 import net.minecraft.entity.vehicle.BoatEntity;

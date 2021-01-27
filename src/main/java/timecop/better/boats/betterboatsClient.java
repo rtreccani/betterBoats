@@ -18,6 +18,4 @@ public class betterboatsClient implements ClientModInitializer {
         return new dinghyEntityRenderer(dispatcher);
     });
     }
-
-    
 }
