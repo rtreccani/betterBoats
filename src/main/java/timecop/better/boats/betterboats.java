@@ -21,7 +21,7 @@ public class betterboats implements ModInitializer {
     public static final EntityType<dinghyEntity> DINGHY = Registry.register(
         Registry.ENTITY_TYPE,
         new Identifier("betterboats","dinghy_entity"),
-        FabricEntityTypeBuilder.create(SpawnGroup.MISC, dinghyEntity()).dimensions(EntityDimensions.fixed(10.0f, 10.0f)).build()
+        FabricEntityTypeBuilder.create(SpawnGroup.MISC, dinghyEntityFactory()).dimensions(EntityDimensions.fixed(10.0f, 10.0f)).build()
     );
 
 	@Override
@@ -34,8 +34,8 @@ public class betterboats implements ModInitializer {
 		System.out.println("Hello Fabric world!");
 	}
 
-	private static EntityFactory dinghyEntity() {
-		return null;
+	private static EntityFactory<dinghyEntity> dinghyEntityFactory() {
+		return dinghyEntity::new;
 	}
 }
 

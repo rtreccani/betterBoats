@@ -1,12 +1,13 @@
 
 package timecop.better.boats.entity;
 
-import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.world.World;
 
 
@@ -29,9 +30,6 @@ public class dinghyEntity extends BoatEntity{
         System.out.println("making a dinghyentity using 2nd constructor");
      }
 
-    public final EntityType<?> getType(){
-        return(type);
-    }
 
    @Override
    public Item asItem(){
