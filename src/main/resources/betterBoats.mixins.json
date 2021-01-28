@@ -6,7 +6,8 @@
   "mixins": [
   ],
   "client": [
-    "ClientPlayNetworkHandlerMixin"
+    "ClientPlayNetworkHandlerMixin",
+    "BoatEntityAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

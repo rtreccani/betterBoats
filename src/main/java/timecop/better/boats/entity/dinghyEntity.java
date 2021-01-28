@@ -11,6 +11,7 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.world.World;
 import timecop.Better.Boats.BetterBoats;
+import timecop.Better.Boats.mixin.BoatEntityAccessor;
 
 
 public class DinghyEntity extends BoatEntity{
@@ -64,9 +65,9 @@ public class DinghyEntity extends BoatEntity{
         Vec3d rotatedPassengerInBoatPosition = passengerInBoatPosition.rotateY(-this.yaw * 0.017453292F - 1.5707964F);
         passenger.updatePosition(this.getX() + rotatedPassengerInBoatPosition.x, this.getY() + rotatedPassengerInBoatPosition.y, this.getZ() + rotatedPassengerInBoatPosition.z);
         
-        //headmovement bullshit boooo we don't care
-        // passenger.yaw += this.yawVelocity;
-        // passenger.setHeadYaw(passenger.getHeadYaw() + this.yawVelocity);
+
+        passenger.yaw +=  ((BoatEntityAccessor) this).getYawVelocity();
+        passenger.setHeadYaw(passenger.getHeadYaw() +  ((BoatEntityAccessor) this).getYawVelocity());
          this.copyEntityData(passenger);
         if (passenger instanceof AnimalEntity && this.getPassengerList().size() > 1) {
             int j = passenger.getEntityId() % 2 == 0 ? 90 : 270;
