@@ -1,93 +1,58 @@
 package timecop.Better.Boats.client.model;
 
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.Arrays;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.model.ModelPart;
-import net.minecraft.entity.vehicle.BoatEntity;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.client.render.entity.model.CompositeEntityModel;
+import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.render.entity.model.EntityModel;
+import net.minecraft.client.util.math.MatrixStack;
+import timecop.Better.Boats.entity.DinghyEntity;
 
+	public class DinghyEntityModel extends EntityModel<DinghyEntity> {
+private final ModelPart Boat;
+	private final ModelPart backsail;
+    private final ModelPart Frontsail;
+    
+public DinghyEntityModel() {
+    textureWidth = 16;
+    textureHeight = 16;
+    Boat = new ModelPart(this);
+    Boat.setPivot(0.0F, 24.0F, 0.0F);
+    Boat.setTextureOffset(0, 0).addCuboid(-25.0F, 7.3333F, -8.0F, 50.0F, 1.0F, 16.0F, 0.0F, false);
+    Boat.setTextureOffset(0, 3).addCuboid(24.0F, 1.3333F, -8.0F, 1.0F, 7.0F, 15.0F, 0.0F, false);
+    Boat.setTextureOffset(0, 0).addCuboid(-25.0F, 1.3333F, -9.0F, 50.0F, 7.0F, 1.0F, 0.0F, false);
+    Boat.setTextureOffset(0, 3).addCuboid(-25.0F, 1.3333F, -8.0F, 1.0F, 7.0F, 15.0F, 0.0F, false);
+    Boat.setTextureOffset(0, 0).addCuboid(-25.0F, 1.3333F, 7.0F, 50.0F, 7.0F, 1.0F, 0.0F, false);
 
-@Environment(EnvType.CLIENT)
-public class DinghyEntityModel extends CompositeEntityModel<BoatEntity> {
-   private final ModelPart[] paddles = new ModelPart[2];
-   private final ModelPart bottom;
-   private final ImmutableList<ModelPart> parts;
+    backsail = new ModelPart(this);
+    backsail.setPivot(0.0F, 0.0F, 0.0F);
+    Boat.addChild(backsail);
+    backsail.setTextureOffset(7, 0).addCuboid(0.0F, -33.6667F, -1.0F, 1.0F, 42.0F, 1.0F, 0.0F, false);
+    backsail.setTextureOffset(0, 0).addCuboid(1.0F, -1.6667F, -1.0F, 17.0F, 1.0F, 1.0F, 0.0F, false);
 
-   public DinghyEntityModel() {
-      ModelPart[] modelParts = new ModelPart[]{(new ModelPart(this, 0, 0)).setTextureSize(128, 64), (new ModelPart(this, 0, 19)).setTextureSize(128, 64), (new ModelPart(this, 0, 27)).setTextureSize(128, 64), (new ModelPart(this, 0, 35)).setTextureSize(128, 64), (new ModelPart(this, 0, 43)).setTextureSize(128, 64)};
-      //int i = true;
-    //   int j = true;
-    //   int k = true;
-    //   int l = true;
-    //   int m = true;
-      modelParts[0].addCuboid(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F, 0.0F);
-      modelParts[0].setPivot(0.0F, 3.0F, 1.0F);
-      modelParts[1].addCuboid(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F, 0.0F);
-      modelParts[1].setPivot(-15.0F, 4.0F, 4.0F);
-      modelParts[2].addCuboid(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F, 0.0F);
-      modelParts[2].setPivot(15.0F, 4.0F, 0.0F);
-      modelParts[3].addCuboid(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F, 0.0F);
-      modelParts[3].setPivot(0.0F, 4.0F, -9.0F);
-      modelParts[4].addCuboid(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F, 0.0F);
-      modelParts[4].setPivot(0.0F, 4.0F, 9.0F);
-      modelParts[0].pitch = 1.5707964F;
-      modelParts[1].yaw = 4.712389F;
-      modelParts[2].yaw = 1.5707964F;
-      modelParts[3].yaw = 3.1415927F;
-      this.paddles[0] = this.makePaddle(true);
-      this.paddles[0].setPivot(3.0F, -5.0F, 9.0F);
-      this.paddles[1] = this.makePaddle(false);
-      this.paddles[1].setPivot(3.0F, -5.0F, -9.0F);
-      this.paddles[1].yaw = 3.1415927F;
-      this.paddles[0].roll = 0.19634955F;
-      this.paddles[1].roll = 0.19634955F;
-      this.bottom = (new ModelPart(this, 0, 0)).setTextureSize(128, 64);
-      this.bottom.addCuboid(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F, 0.0F);
-      this.bottom.setPivot(0.0F, -3.0F, 1.0F);
-      this.bottom.pitch = 1.5707964F;
-      Builder<ModelPart> builder = ImmutableList.builder();
-      builder.addAll(Arrays.asList(modelParts));
-      builder.addAll(Arrays.asList(this.paddles));
-      this.parts = builder.build();
-   }
-
-   public void setAngles(BoatEntity boatEntity, float f, float g, float h, float i, float j) {
-      this.setPaddleAngle(boatEntity, 0, f);
-      this.setPaddleAngle(boatEntity, 1, f);
-   }
-
-   public ImmutableList<ModelPart> getParts() {
-      return this.parts;
-   }
-
-   public ModelPart getBottom() {
-      return this.bottom;
-   }
-
-   protected ModelPart makePaddle(boolean isLeft) {
-      ModelPart modelPart = (new ModelPart(this, 62, isLeft ? 0 : 20)).setTextureSize(128, 64);
-    //   int i = true;
-    //   int j = true;
-    //   int k = true;
-      float f = -5.0F;
-      modelPart.addCuboid(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 180.0F);
-      modelPart.addCuboid(isLeft ? -1.001F : 0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F);
-      return modelPart;
-   }
-
-   protected void setPaddleAngle(BoatEntity boat, int paddle, float angle) {
-      float f = boat.interpolatePaddlePhase(paddle, angle);
-      ModelPart modelPart = this.paddles[paddle];
-      modelPart.pitch = (float)MathHelper.clampedLerp(-1.0471975803375244D, -0.2617993950843811D, (double)((MathHelper.sin(-f) + 1.0F) / 2.0F));
-      modelPart.yaw = (float)MathHelper.clampedLerp(-0.7853981852531433D, 0.7853981852531433D, (double)((MathHelper.sin(-f + 1.0F) + 1.0F) / 2.0F));
-      if (paddle == 1) {
-         modelPart.yaw = 3.1415927F - modelPart.yaw;
-      }
-
-   }
+    Frontsail = new ModelPart(this);
+    Frontsail.setPivot(0.0F, 0.0F, 3.0F);
+    Boat.addChild(Frontsail);
+    Frontsail.setTextureOffset(32, 15).addCuboid(-17.0F, -26.6667F, -4.0F, 1.0F, 35.0F, 1.0F, 0.0F, false);
+    Frontsail.setTextureOffset(0, 0).addCuboid(-16.0F, -4.6667F, -4.0F, 13.0F, 1.0F, 1.0F, 0.0F, false);
 }
+
+    @Override
+    public void setAngles(DinghyEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
+            //previously the render function, render code was moved to a method below
+    }
+    @Override
+    public void render(MatrixStack matrixStack, VertexConsumer	buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
+            Boat.render(matrixStack, buffer, packedLight, packedOverlay);
+    }
+    public void setRotationAngle(ModelPart bone, float x, float y, float z) {
+            bone.pitch = x;
+            bone.yaw = y;
+            bone.roll = z;
+    }
+
+    public ModelPart getBottom(){
+        ModelPart bottom = new ModelPart(this);
+        bottom.addCuboid(-25.0F, 7.3333F, -8.0F, 50.0F, 1.0F, 16.0F, 0.0F, false);
+        return(bottom);
+    }
+
+	}

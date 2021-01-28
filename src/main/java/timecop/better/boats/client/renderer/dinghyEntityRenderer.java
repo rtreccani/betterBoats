@@ -26,7 +26,7 @@ public class DinghyEntityRenderer extends EntityRenderer<DinghyEntity>{
 
     public void render(DinghyEntity dinghyEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
         matrixStack.push();
-        matrixStack.translate(0.0D, 0.375D, 0.0D);
+        matrixStack.translate(0.0D, 2.375D, 0.0D);
         matrixStack.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(180.0F - f));
         float h = (float)dinghyEntity.getDamageWobbleTicks() - g;
         float j = dinghyEntity.getDamageWobbleStrength() - g;
@@ -43,7 +43,7 @@ public class DinghyEntityRenderer extends EntityRenderer<DinghyEntity>{
            matrixStack.multiply(new Quaternion(new Vector3f(1.0F, 0.0F, 1.0F), dinghyEntity.interpolateBubbleWobble(g), true));
         }
   
-        matrixStack.scale(-1.0F, -1.0F, 1.0F);
+        matrixStack.scale(1.0F, -1.0F, 1.0F);
         matrixStack.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(90.0F));
         this.model.setAngles(dinghyEntity, g, 0.0F, -0.1F, 0.0F, 0.0F);
         VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(this.model.getLayer(this.getTexture(dinghyEntity)));

@@ -21,7 +21,7 @@ public class BetterBoats implements ModInitializer {
     public static final EntityType<DinghyEntity> DINGHY = Registry.register(
         Registry.ENTITY_TYPE,
         new Identifier("betterboats","dinghy_entity"),
-        FabricEntityTypeBuilder.create(SpawnGroup.MISC, dinghyEntityFactory()).dimensions(EntityDimensions.fixed(3.0f, 3.0f)).build()
+        FabricEntityTypeBuilder.create(SpawnGroup.MISC, dinghyEntityFactory()).dimensions(EntityDimensions.fixed(1.3f, 0.4f)).build()
     );
 
 	@Override
