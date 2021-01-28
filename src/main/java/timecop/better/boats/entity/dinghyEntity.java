@@ -5,8 +5,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 
 import net.minecraft.util.math.Vec3d;
-
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.world.World;
 import timecop.Better.Boats.BetterBoats;
@@ -36,11 +37,42 @@ public class DinghyEntity extends BoatEntity{
    public Item asItem(){
        return(DINGHY_ITEM);
    }
-    
-}
+   
+    public void updatePassengerPosition(Entity passenger) {
+        int passengerIndex = this.getPassengerList().indexOf(passenger);
+        Vec3d passengerInBoatPosition;
+        switch(passengerIndex){
+            case 0:
+                //AARRR I be the captain of this here vessel
+                passengerInBoatPosition = new Vec3d(-1.5, 0, 0);
+                break;
+            case 1:
+                passengerInBoatPosition = new Vec3d(-0.6, 0, -0.4);
+                break;
+            
+            case 2:
+                passengerInBoatPosition = new Vec3d(-0.6, 0, 0.4);
+                break;
+            
+            case 3:
+                passengerInBoatPosition = new Vec3d(0.1, 0, -0.4);
+                break;
+            default:
+                passengerInBoatPosition = new Vec3d(0, 10, 0);
+        }
+        Vec3d rotatedPassengerInBoatPosition = passengerInBoatPosition.rotateY(-this.yaw * 0.017453292F - 1.5707964F);
+        passenger.updatePosition(this.getX() + rotatedPassengerInBoatPosition.x, this.getY() + rotatedPassengerInBoatPosition.y, this.getZ() + rotatedPassengerInBoatPosition.z);
+        
+        //headmovement bullshit boooo we don't care
+        //passenger.yaw += this.yawVelocity;
+         //passenger.setHeadYaw(passenger.getHeadYaw() + this.yawVelocity);
+         this.copyEntityData(passenger);
+         if (passenger instanceof AnimalEntity && this.getPassengerList().size() > 1) {
+            int j = passenger.getEntityId() % 2 == 0 ? 90 : 270;
+            passenger.setYaw(((AnimalEntity)passenger).bodyYaw + (float)j);
+            passenger.setHeadYaw(passenger.getHeadYaw() + (float)j);
+         }
+    }
 
-// public class dinghyItemClass extends Item{
-//     public dinghyItemClass(Settings settings){
-//         super(settings);
-//     }
-// }
+
+}

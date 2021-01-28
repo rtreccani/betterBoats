@@ -43,15 +43,15 @@ public class DinghyEntityRenderer extends EntityRenderer<DinghyEntity>{
            matrixStack.multiply(new Quaternion(new Vector3f(1.0F, 0.0F, 1.0F), dinghyEntity.interpolateBubbleWobble(g), true));
         }
   
-        matrixStack.scale(1.0F, -1.0F, 1.0F);
+        matrixStack.scale(-1.0F, -1.0F, -1.0F);
         matrixStack.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(90.0F));
         this.model.setAngles(dinghyEntity, g, 0.0F, -0.1F, 0.0F, 0.0F);
         VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(this.model.getLayer(this.getTexture(dinghyEntity)));
         this.model.render(matrixStack, vertexConsumer, i, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
-        if (!dinghyEntity.isSubmergedInWater()) {
-           VertexConsumer vertexConsumer2 = vertexConsumerProvider.getBuffer(RenderLayer.getWaterMask());
-           this.model.getBottom().render(matrixStack, vertexConsumer2, i, OverlayTexture.DEFAULT_UV);
-        }
+        // if (!dinghyEntity.isSubmergedInWater()) {
+        //    VertexConsumer vertexConsumer2 = vertexConsumerProvider.getBuffer(RenderLayer.getWaterMask());
+        //    this.model.getBottom().render(matrixStack, vertexConsumer2, i, OverlayTexture.DEFAULT_UV);
+        // }
   
         matrixStack.pop();
         super.render(dinghyEntity, f, g, matrixStack, vertexConsumerProvider, i);

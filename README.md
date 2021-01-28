@@ -13,8 +13,8 @@ to obtain an item.
 - Fix player position: currently, the player is sat in the middle of the boats bounding box.
 - Fix bounding box: the bounding box is the wrong dimensions and not centred
 - Fix boat offset
-- Fix player in boat offset
-- Fix boat orientation. currently it moves backwards
+- ~~Fix player in boat offset~~ Fixed by rewritingthe updatePassengerPosition function to account for multiple people in different positions
+- ~~Fix boat orientation. currently it moves backwards~~ Fixed by inverting on Z.
 - Redo model(currently a bit small and lame)
 
 Will add more to the todo once the basics are ironed out.
