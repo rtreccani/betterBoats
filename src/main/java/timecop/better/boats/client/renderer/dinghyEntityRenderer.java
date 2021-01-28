@@ -12,7 +12,7 @@ import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.OverlayTexture;
-import net.minecraft.client.render.RenderLayer;
+
 
 
 public class DinghyEntityRenderer extends EntityRenderer<DinghyEntity>{

@@ -10,7 +10,7 @@ Currently the boat model can be imported into the game, it floats, moves, and ca
 to obtain an item. 
 ## Current issues:
 
-- Fix player position: currently, the player is sat in the middle of the boats bounding box.
+- ~~Fix player position: currently, the player is sat in the middle of the boats bounding box.~~
 - Fix bounding box: the bounding box is the wrong dimensions and not centred
 - Fix boat offset
 - ~~Fix player in boat offset~~ Fixed by rewritingthe updatePassengerPosition function to account for multiple people in different positions
